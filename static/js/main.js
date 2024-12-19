@@ -15,7 +15,10 @@
 
     $(document).ready(function () {
 
-       
+        /* magnificPopup video view */
+        $('.popup-video').magnificPopup({
+            type: 'iframe'
+        });
 
         /* review-active */
         $('.slider_active').owlCarousel({
