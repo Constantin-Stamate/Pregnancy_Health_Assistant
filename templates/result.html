@@ -207,6 +207,25 @@
     </div>
 </div>
 
+<!--Information about prediction results-->
+<section class="sample-text-area" style="margin-top: 40px; padding-top: 30px;">
+    <div class="container box_1170">
+        <h3 class="text-heading">Fetal Health Status!</h3>
+        {% if prediction == 1 %}
+        <p class="sample-text">
+            Fetal Health: Great! The fetus is in a NORMAL health condition.
+        </p>
+        {% elif prediction == 2 %}
+        <p class="sample-text">
+            Fetal Health: Attention! The fetus health is SUSPECT and needs monitoring.
+        </p>
+        {% elif prediction == 3 %}
+        <p class="sample-text">
+            Fetal Health: Alert! The fetus is in a PATHOLOGICAL health condition.
+        </p>
+    </div>
+</section>
+
 </body>
 
 </html>
