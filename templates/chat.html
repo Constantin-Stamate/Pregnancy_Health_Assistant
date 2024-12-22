@@ -184,6 +184,88 @@
 </footer>
 
 <!--Adding JS files-->
+<script>
+    function scrollToBottom() {
+        var messageBody = document.getElementById("messageArea");
+        messageBody.scrollTop = messageBody.scrollHeight;
+    }
+
+    $(document).ready(function () {
+        let messageId = 0; 
+
+        $("#messageArea").on("submit", function (event) {
+            event.preventDefault();
+
+            const userMessage = $("#text").val();
+
+            if (!userMessage.trim()) {
+                alert("Mesajul nu poate fi gol!");
+                return;
+            }
+
+        const userHtml = `
+        <div class="d-flex justify-content-end mb-4" id="userMessage_${messageId}">
+          <div class="msg_cotainer_send">${userMessage}
+            <span class="msg_time_send">${new Date().toLocaleTimeString()}</span>
+          </div>
+          <div class="img_cont_msg">
+            <img
+              src="https://i.ibb.co/d5b84Xw/Untitled-design.png"
+              class="rounded-circle user_img_msg"
+            />
+          </div>
+        </div>
+      `;
+            $("#text").val("");  
+            $("#messageForm").append(userHtml); 
+            scrollToBottom();
+
+            fetch("/get", {
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: `msg=${encodeURIComponent(userMessage)}`
+            })
+                .then(response => {
+
+          const botHtml = `
+          <div class="d-flex justify-content-start mb-4" id="botMessage_${messageId}">
+            <div class="img_cont_msg">
+              <img
+                src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png"
+                class="rounded-circle user_img_msg"
+              />
+            </div>
+            <div class="msg_cotainer" id="botMessageContainer_${messageId}">
+            </div>
+          </div>
+        `;
+                    $("#messageForm").append(botHtml); 
+                    scrollToBottom();
+
+                    const botContainer = document.getElementById(`botMessageContainer_${messageId}`);
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder("utf-8");
+
+                    function read() {
+                        reader.read().then(({done, value}) => {
+                            if (done) return;
+                            botContainer.innerHTML += decoder.decode(value);  
+                            scrollToBottom();
+                            read();
+                        });
+                    }
+
+                    read();
+                })
+                .catch(() => {
+                    alert("Eroare la trimiterea mesajului.");
+                });
+
+            messageId++;  
+        });
+    });
+</script>
+
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="../static/js/main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
