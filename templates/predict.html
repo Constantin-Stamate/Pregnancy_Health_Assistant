@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--Application logo placement-->
-    <link rel="icon" type="image/x-icon" href="../static/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
 
     <!--Importing CSS files into the project-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/predict.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/predict.css') }}">  
 
     <!--Editing wallpaper properties-->
     <style>
@@ -44,19 +44,19 @@
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="index.html">home</a></li>
-                                    <li><a class="active" href="predict.html">health</a></li>
-                                    <li><a href="result.html">result</a></li>
-                                    <li><a href="chat.html">healthAI</a></li>
-                                    <li><a href="login.html">login</a></li>
+                                    <li><a href="/">home</a></li>
+                                    <li><a class="active" href="/predict">health</a></li>
+                                    <li><a href="/result">result</a></li>
+                                    <li><a href="/chat">healthAI</a></li>
+                                    <li><a href="/login">login</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo-img">
-                            <a href="index.html">
-                                <img src="../static/images/favicon.png" alt=""
+                            <a href="/">
+                                <img src="{{ url_for('static', filename='images/favicon.png') }}" alt=""
                                      style=" width: 75px; height: 75px; color: white">
                             </a>
                         </div>
@@ -64,7 +64,7 @@
                     <div class="col-xl-5 col-lg-4 d-none d-lg-block">
                         <div class="book_room">
                             <div class="book_btn d-none d-lg-block">
-                                <a href="predict.html">Predict fetal health</a>
+                                <a href="/predict">Predict fetal health</a>
                             </div>
                         </div>
                     </div>
@@ -95,119 +95,118 @@
 <div class="container">
     <div class="title">Pregnancy Assistant</div>
     <div class="content">
-        <form action="#">
+        <form action="/submit" method="POST">
             <div class="user-details">
-
                 <div class="input-box">
                     <span class="details">Baseline value</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="baseline_value" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Accelerations</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="accelerations" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Fetal movement</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="fetal_movement" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Uterine contractions</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="uterine_contractions" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Light decelerations</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="light_decelerations" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Severe decelerations</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="severe_decelerations" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Prolonged decelerations</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="prolonged_decelerations" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Abnormal variability</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="abnormal_variability" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Short variability</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="short_variability" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Percentage of variability</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="percentage_of_variability" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Long variability</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="long_variability" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram width</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_width" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram min</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_min" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram max</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_max" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram of peaks</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_of_peaks" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram of zeroes</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_of_zeroes" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram mode</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_mode" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram mean</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_mean" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram median</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_median" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram variance</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_variance" placeholder="Enter value" required>
                 </div>
-
+        
                 <div class="input-box">
                     <span class="details">Histogram tendency</span>
-                    <input type="text" placeholder="Enter value" required>
+                    <input type="text" name="histogram_tendency" placeholder="Enter value" required>
                 </div>
-
             </div>
+        
             <div class="button">
                 <input type="submit" value="Predict">
             </div>
-        </form>
+        </form>        
     </div>
 </div>
 
@@ -230,8 +229,8 @@
                     <div class="footer_widget">
                         <h3 class="footer_title">Authentication</h3>
                         <ul class="footer_links" style="list-style: none; padding: 0; margin: 0;">
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Register</a></li>
                         </ul>
                     </div>
                 </div>
@@ -240,9 +239,9 @@
                     <div class="footer_widget">
                         <h3 class="footer_title">Navigation</h3>
                         <ul class="footer_links" style="list-style: none; padding: 0; margin: 0;">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="predict.html">Health</a></li>
-                            <li><a href="result.html">Result</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/predict">Health</a></li>
+                            <li><a href="/result">Result</a></li>
                         </ul>
                     </div>
                 </div>
@@ -267,7 +266,7 @@
 
 <!--Adding JS files-->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="../static/js/main.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 </body>
 
