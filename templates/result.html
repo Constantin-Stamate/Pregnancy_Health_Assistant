@@ -207,7 +207,7 @@
     </div>
 </div>
 
-<!--Information about prediction results-->
+<!-- Information about prediction results -->
 <section class="sample-text-area" style="margin-top: 40px; padding-top: 30px;">
     <div class="container box_1170">
         <h3 class="text-heading">Fetal Health Status!</h3>
@@ -223,6 +223,11 @@
         <p class="sample-text">
             Fetal Health: Alert! The fetus is in a PATHOLOGICAL health condition.
         </p>
+        {% else %}
+        <p class="sample-text">
+            No prediction available.
+        </p>
+        {% endif %}
     </div>
 </section>
 
