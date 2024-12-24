@@ -14,21 +14,21 @@
 
 <body>
 
-    <!--Add login form-->
-    <div class="wrapper">
-        <form action="#">
+     <!-- Add login form -->
+     <div class="wrapper">
+        <form action="{{ url_for('login_page') }}" method="POST">
             <h2>Login</h2>
             <div class="input-field">
-                <input type="text" required>
+                <input type="email" name="email" required>
                 <label>Enter your email</label>
             </div>
             <div class="input-field">
-                <input type="password" required>
+                <input type="password" name="password" required>
                 <label>Enter your password</label>
             </div>
             <button type="submit">Login</button>
             <div class="register">
-                <p>Don't have an account? <a href="register.html">Register Here</a></p>
+                <p>Don't have an account? <a href="{{ url_for('register_page') }}">Register Here</a></p>
             </div>
         </form>
     </div>
