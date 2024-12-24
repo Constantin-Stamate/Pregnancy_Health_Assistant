@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, Response
+from flask_sqlalchemy import SQLAlchemy
 import requests
 import time
 import json
@@ -6,6 +7,11 @@ import json
 app = Flask(__name__)
 
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/database'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 @app.route("/")
 def index():
