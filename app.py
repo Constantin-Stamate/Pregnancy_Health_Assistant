@@ -20,11 +20,44 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
 
 db = SQLAlchemy(app)
 
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_message = db.Column(db.Text, nullable=False)
+    bot_response = db.Column(db.Text, nullable=False)
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), nullable=False, unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+
+class PregnancyData(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  
+    baseline_value = db.Column(db.String(120), nullable=False)
+    accelerations = db.Column(db.String(120), nullable=False)
+    fetal_movement = db.Column(db.String(120), nullable=False)
+    uterine_contractions = db.Column(db.String(120), nullable=False)
+    light_decelerations = db.Column(db.String(120), nullable=False)
+    severe_decelerations = db.Column(db.String(120), nullable=False)
+    prolonged_decelerations = db.Column(db.String(120), nullable=False)
+    abnormal_variability = db.Column(db.String(120), nullable=False)
+    short_variability = db.Column(db.String(120), nullable=False)
+    percentage_of_variability = db.Column(db.String(120), nullable=False)
+    long_variability = db.Column(db.String(120), nullable=False)
+    histogram_width = db.Column(db.String(120), nullable=False)
+    histogram_min = db.Column(db.String(120), nullable=False)
+    histogram_max = db.Column(db.String(120), nullable=False)
+    histogram_of_peaks = db.Column(db.String(120), nullable=False)
+    histogram_of_zeroes = db.Column(db.String(120), nullable=False)
+    histogram_mode = db.Column(db.String(120), nullable=False)
+    histogram_mean = db.Column(db.String(120), nullable=False)
+    histogram_median = db.Column(db.String(120), nullable=False)
+    histogram_variance = db.Column(db.String(120), nullable=False)
+    histogram_tendency = db.Column(db.String(120), nullable=False)
+
+    def __repr__(self):
+        return f"<PregnancyData {self.id}>"
 
 def login_required(f):
     @wraps(f)
