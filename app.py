@@ -8,6 +8,7 @@ import pytz
 import requests
 import time
 import json
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -90,35 +91,37 @@ def predict_page():
 @app.route("/result", methods=["GET"])
 @login_required
 def result():
-
     data = session.get('form_data', {})
 
     if data:
-        features = [
-            int(data.get('baseline_value', 0)),
-            int(data.get('accelerations', 0)),
-            int(data.get('fetal_movement', 0)),
-            int(data.get('uterine_contractions', 0)),
-            int(data.get('light_decelerations', 0)),
-            int(data.get('severe_decelerations', 0)),
-            int(data.get('prolonged_decelerations', 0)),
-            int(data.get('abnormal_variability', 0)),
-            int(data.get('short_variability', 0)),
-            int(data.get('percentage_of_variability', 0)),
-            int(data.get('long_variability', 0)),
-            int(data.get('histogram_width', 0)),
-            int(data.get('histogram_min', 0)),
-            int(data.get('histogram_max', 0)),
-            int(data.get('histogram_of_peaks', 0)),
-            int(data.get('histogram_of_zeroes', 0)),
-            int(data.get('histogram_mode', 0)),
-            int(data.get('histogram_mean', 0)),
-            int(data.get('histogram_median', 0)),
-            int(data.get('histogram_variance', 0)),
-            int(data.get('histogram_tendency', 0))
-        ]
+        features_dict = {
+            'baseline value': data.get('baseline_value'),
+            'accelerations': data.get('accelerations'),
+            'fetal_movement': data.get('fetal_movement'),
+            'uterine_contractions': data.get('uterine_contractions'),
+            'light_decelerations': data.get('light_decelerations'),
+            'severe_decelerations': data.get('severe_decelerations'),
+            'prolongued_decelerations': data.get('prolonged_decelerations'),
+            'abnormal_short_term_variability': data.get('abnormal_variability'),
+            'mean_value_of_short_term_variability': data.get('short_variability'),
+            'percentage_of_time_with_abnormal_long_term_variability': data.get('percentage_of_variability'),
+            'mean_value_of_long_term_variability': data.get('long_variability'),
+            'histogram_width': data.get('histogram_width'),
+            'histogram_min': data.get('histogram_min'),
+            'histogram_max': data.get('histogram_max'),
+            'histogram_number_of_peaks': data.get('histogram_of_peaks'),
+            'histogram_number_of_zeroes': data.get('histogram_of_zeroes'),
+            'histogram_mode': data.get('histogram_mode'),
+            'histogram_mean': data.get('histogram_mean'),
+            'histogram_median': data.get('histogram_median'),
+            'histogram_variance': data.get('histogram_variance'),
+            'histogram_tendency': data.get('histogram_tendency')
+        }
 
-        prediction = model_ros.predict([features])[0]
+
+        input_data = pd.DataFrame([features_dict])
+
+        prediction = model_ros.predict(input_data)[0]
         return render_template('result.html', data=data, prediction=prediction)
 
     return render_template('result.html', data=data, prediction=None)
@@ -271,7 +274,6 @@ def submit_form():
         session['form_data'] = data
 
         return redirect(url_for('predict_page'))
-
 
 def save_message_to_db(user_msg, bot_response):
     try:
