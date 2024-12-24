@@ -1,3 +1,4 @@
+from datetime import timedelta
 from flask import Flask, render_template, request, Response
 from flask_sqlalchemy import SQLAlchemy
 import requests
@@ -10,8 +11,17 @@ OLLAMA_API_URL = "http://localhost:11434/api/generate"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/database'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = "Costea+11" 
+
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
 
 db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), nullable=False, unique=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    password = db.Column(db.String(255), nullable=False)
 
 @app.route("/")
 def index():
