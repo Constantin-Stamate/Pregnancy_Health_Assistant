@@ -118,7 +118,6 @@ def result():
             'histogram_tendency': data.get('histogram_tendency')
         }
 
-
         input_data = pd.DataFrame([features_dict])
 
         prediction = model_ros.predict(input_data)[0]
@@ -141,14 +140,18 @@ def login_page():
         email = request.form['email']
         password = request.form['password']
         user = User.query.filter_by(email=email).first()
-        if user:
-            if check_password_hash(user.password, password):
+
+        if user:  
+            if check_password_hash(user.password, password):  
                 session['user_id'] = user.id
                 session['username'] = user.username
                 session.permanent = True  
                 session['session_expiry'] = datetime.now(pytz.UTC) + timedelta(minutes=5)  
                 return redirect(url_for('home_page'))  
-        return redirect(url_for('register_page')) 
+            else:
+                return render_template('login.html')  
+        else:
+            return redirect(url_for('register_page'))  
 
     return render_template('login.html')
 
