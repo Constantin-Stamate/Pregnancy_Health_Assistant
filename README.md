@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="static/images/favicon.png" alt="Image Description" width="180"/>
+  <img src="static/images/favicon.png" alt="Image Description" width="120"/>
 </p>
-<p align="center"><b style="font-size: 22px; font-family: 'Times New Roman', serif;">Support for You and Your Baby</b><p>
+<p align="center"><b style="font-size: 21px; font-family: 'Times New Roman', serif;">Support for You and Your Baby</b><p>
 
 ## Table of Contents
 - [About](#-about)
@@ -105,12 +105,7 @@ Users can input relevant medical data (such as fetal heart rate, uterine contrac
 
 3. **Prediction Results**  
 Users can view the medical data they have entered, such as fetal heart rate, uterine contractions, and other relevant health parameters.
-
-<div style="margin-left: 39px;">
-  <p>
-    The application provides feedback on the fetus's health status, offering a preliminary diagnosis and recommendations to highlight potential risks, aiding healthcare professionals in decision-making.
-  </p>
-</div>
+The application provides feedback on the fetus's health status, offering a preliminary diagnosis and recommendations to highlight potential risks, aiding healthcare professionals in decision-making.
 
 <p align="center">
   <img src="static/images/summary.png"/>
