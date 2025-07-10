@@ -3,11 +3,15 @@
 </p>
 <p align="center"><b style="font-size: 21px; font-family: 'Times New Roman', serif;">Support for You and Your Baby</b><p>
 
+---
+
 ## Table of Contents
 - [About](#-about)
 - [How to Build](#-how-to-build)
 - [Key Features](#-key-features)
 - [Contributors](#%EF%B8%8F-contributors)
+
+---
 
 ## 🔬 About
 
@@ -23,69 +27,73 @@ The core feature is the health prediction, which is generated from the user’s 
   <img src="static/images/assistant.png" alt="Assistant"/>
 </p>
 
+---
+
 ## ⚙️ How to Build
 
 To install the application, follow these steps:
 
-1. Clone this repository:
+1. **Clone this repository:**
 ```bash
-  git clone https://github.com/Constantin-Stamate/PregnancyHealthAssistant.git
+   git clone https://github.com/Constantin-Stamate/PregnancyHealthAssistant.git
 ```
 
-2. Navigate to the project repository:
+2. **Navigate to the project repository:**
 ```bash
-  cd path to directory/PregnancyHealthAssistant
+   cd path to directory/PregnancyHealthAssistant
 ```
 
-3. Create a virtual environment:
+3. **Create a virtual environment:**
 ```bash
-  python3 -m venv venv
+   python3 -m venv venv
 ```
 
-4. Activate the virtual environment for Windows:
+4. **Activate the virtual environment for Windows:**
 ```bash
-  venv/Scripts/activate.bat --activate virtual env
+   venv/Scripts/activate.bat --activate virtual env
 ```
 
-5. Activate the virtual environment for Mac:
+5. **Activate the virtual environment for Mac:**
 ```bash
-  source venv/bin/activate
+   source venv/bin/activate
 ```
 
-6. Install the dependecies:
+6. **Install the dependecies:**
 ```bash
-  pip install -r requirements.txt
+   pip install -r requirements.txt
 ```
 
-7. Additionally, you can connect to a mySQL database and create a project:
+7. **Additionally, you can connect to a mySQL database and create a project:**
 ```bash
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<username>:<password>@<hostname>:<port>/<database_name>'
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<username>:<password>@<hostname>:<port>/<database_name>'
 ```
 
-8. Replace flask key with your personal one:
+8. **Replace flask key with your personal one:**
 ```bash
-  app.secret_key = "your_secure_secret_key"
+   app.secret_key = "your_secure_secret_key"
 ```
 
-9. Setup the chatBot:
+9. **Setup the chatBot:**
 ```bash
-  https://ollama.com/download
+   https://ollama.com/download
 ```
 
-10. Run the following command in the terminal:
+10. **Run the following command in the terminal:**
 ```bash
-  ollama run llama3.2
+   ollama run llama3.2
 ```
 
-11. Run the application:
+11. **Run the application:**
 ```bash
-  python app.py
+   python app.py
 ```
 
-12. Navigate to the following URL in your browser and use the app:
+12. **Navigate to the following URL in your browser and use the app:**
 ```bash
-  http://127.0.0.1:5000
+   http://127.0.0.1:5000
 ```
+
+---
 
 ## 🧬 Key Features
 
@@ -117,6 +125,8 @@ HealthAI chatbot allows users to ask questions about fetal and maternal health, 
 <p align="center">
   <img src="static/images/prompt.png"/>
 </p>
+
+---
 
 ## 👩‍💻 Contributors
 
