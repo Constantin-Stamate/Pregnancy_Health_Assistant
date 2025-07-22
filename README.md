@@ -3,33 +3,39 @@
 </p>
 <p align="center"><b style="font-size: 21px; font-family: 'Times New Roman', serif;">Support for You and Your Baby</b><p>
 
----
+## Overview
 
-## Table of Contents
-- [About](#-about)
-- [How to Build](#-how-to-build)
-- [Key Features](#-key-features)
-- [Contributors](#%EF%B8%8F-contributors)
+**The Pregnancy Health Assistant** is a web application that uses a chatbot and Machine Learning prediction to provide advice based on investigative medical data (Campos, D. & Bernardes, J. (2000). UCI Machine Learning Repository. https://doi.org/10.24432/C51S4N).
 
----
-
-## 🔬 About
-
-**The Pregnancy Health Assistant** is a web application that uses a chatbot and Machine Learning prediction to provide advice based on investigative medical data
-(Campos, D. & Bernardes, J. (2000). UCI Machine Learning Repository. https://doi.org/10.24432/C51S4N).
-
-The data is analyzed using an **AI model (Ollama 3.2)** and **Gradient Boosting algorithm** to deliver a preliminary diagnosis of fetal health risks.
-
-Built with **Python** and **Flask**, the application allows users to interact with the chatbot and test functionalities after launching the app.
-The core feature is the health prediction, which is generated from the user’s input through the trained machine learning model.
+It offers a supportive interface for pregnant users to receive real-time assistance and fetal health evaluations in an accessible and user-friendly way, combining advanced predictive analytics with intuitive design to ensure users feel confident and informed throughout their pregnancy journey.
 
 <p align="center">
   <img src="static/images/assistant.png" alt="Assistant"/>
 </p>
 
----
+## Features
 
-## ⚙️ How to Build
+- **User Authentication**: Register and log in to access personalized features.
+<p align="center">
+  <img src="static/images/authentication.png"/>
+</p>
+
+- **Fetal Health Prediction**: Input medical data such as fetal heart rate, uterine contractions, etc., and receive a prediction based on the Gradient Boosting model.
+<p align="center">
+  <img src="static/images/prediction.png"/>
+</p>
+
+- **Prediction Results**: Review the entered health data along with a preliminary diagnosis and recommendations to highlight potential fetal risks.
+<p align="center">
+  <img src="static/images/summary.png"/>
+</p>
+
+- **HealthAI Chatbot**: Ask questions related to fetal and maternal health, and receive AI-based guidance and feedback using predictive medical models.
+<p align="center">
+  <img src="static/images/prompt.png"/>
+</p>
+
+## Installation
 
 To install the application, follow these steps:
 
@@ -93,42 +99,17 @@ To install the application, follow these steps:
    http://127.0.0.1:5000
 ```
 
----
+## Technologies
 
-## 🧬 Key Features
+- **Framework**: Flask  
+- **Programming Language**: Python  
+- **Machine Learning**: Gradient Boosting, Logistic Regression, Decision Tree, Ollama 3.2  
+- **Database**: MySQL  
+- **Frontend**: HTML, CSS
+- **Version Control**: Git, GitHub  
+- **Development Environment**: Visual Studio Code 
 
-1. **User Authentication**  
-Register and Login functionality for users: Users can create an account and log in to access personalized features.
-
-<p align="center">
-  <img src="static/images/authentication.png"/>
-</p>
-
-2. **Fetal Health Prediction**  
-Users can input relevant medical data (such as fetal heart rate, uterine contractions, and more) required for health risk prediction. This data is then processed by the Gradient Boosting model.
-
-<p align="center">
-  <img src="static/images/prediction.png"/>
-</p>
-
-3. **Prediction Results**  
-Users can view the medical data they have entered, such as fetal heart rate, uterine contractions, and other relevant health parameters.
-The application provides feedback on the fetus's health status, offering a preliminary diagnosis and recommendations to highlight potential risks, aiding healthcare professionals in decision-making.
-
-<p align="center">
-  <img src="static/images/summary.png"/>
-</p>
-
-4. **HealthAI Chatbot**  
-HealthAI chatbot allows users to ask questions about fetal and maternal health, providing answers based on medical data and predictive models. It helps users with health-related queries and offers guidance on maintaining a healthy pregnancy.
-
-<p align="center">
-  <img src="static/images/prompt.png"/>
-</p>
-
----
-
-## 👩‍💻 Contributors
+## Contributors
 
 For more details about our project or any general information, feel free to reach out to us.
 
